@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surabhi Nursery Plants</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color:#4b4b4b;
+}
+
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  background-color: #ff4757;
+}
+
+.nav{
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  color:#ffffff;
+}
+
+.box{
+  color:white;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.cart-count{
+  position: absolute;
+  background-color: #2f3542;
+  top: -5px;
+  right: 0;
+  padding: 3px;
+  height: 20px;
+  width: 20px;
+  line-height:20px ;
+  border-radius: 50%;
+  z-index: 99;
+}
+
+#cart-icon{
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding-top: 10px;
+}
+
+img{
+  width: 100%;
+}
+
+.container{
+  max-width: 1200px;
+  padding: 4rem;
+  margin: auto;
+  width: 100%;
+}
+
+h2.title{
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color:#ffffff;
+}
+
+.shop-content{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,auto));
+  gap:1.5rem;
+  justify-content: center;
+  align-content: center;
+}
+
+.plant-box{
+  position: relative;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 1px 4px rgba(40, 37, 37, 0.1);
+  border-radius: 3px;
+}
+
+.pic{
+  overflow: hidden;
+}
+
+.pic:hover img{
+transform: scale(1.5);
+}
+
+.plant-img{
+  transition: 0.4s;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.plant-title{
+  font-size: 1rem;
+  font-weight: 600;
+  color:#ff6348;
+}
+
+.plant-price{
+  font-weight:500 ;
+}
+
+.add-cart{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #2ed573;
+  color:white;
+  padding: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.add-cart:hover{
+  background-color:rgba(255, 0, 0, 0.786);
+}
+  
+
+.cart{
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 400px;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(40, 37, 37, 0.1);
+  z-index: 100;
+}
+
+.cart-active{
+  right:0;
+  transition: 0.5s;
+}
+
+.cart-title{
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  padding-bottom:20px ;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.cart-box{
+  display: grid;
+  grid-template-columns: 32% 50% 18%;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 10px;
+}
+
+.cart-img{
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border:2px solid  rgba(0,0,0,0.1);
+  padding: 5px;
+}
+.detail-box{
+  display: grid;
+  row-gap: 0.5rem;  
+}
+
+.price-box{
+  display: flex;
+    justify-content: space-between; 
+}
+
+.cart-plant-title{
+   font-size: 1rem;
+   text-transform: uppercase;
+   color:#ff6348;
+   font-weight: 500;
+}
+
+.cart-price{
+  font-weight: 500;
+}
+
+.cart-quantity{
+  border:1px solid rgba(0,0,0,0.1);
+  outline:none ;
+  width: 2.4rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.cart-remove{
+  font-size: 24px;
+  color:red;
+  cursor: pointer;
+}
+
+.total{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.total-title{
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.total-price{
+  margin-left: 0.5rem;
+}
+
+.btn-buy{
+  padding: 12px 20px;
+  background-color:#2f3542;
+  color:#fff;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#cart-close{
+  position: absolute;
+  top: 1rem;
+  right: 0.8rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="#" class="logo">
+        <ion-icon name="Rose"></ion-icon>
+        Surabhi Nursery Plants
+      </a>
+      <div class="nav">
+        <a href="#flower-plants">
+          Flower Plants
+        </a>
+      <div class="nav">
+         <a href="#trees">
+         Trees
+         </a>
+      <div class="nav">
+          <a href="#pot-plants">
+          Pot Plants
+          </a>
+      <div class="nav">
+          <a href="#aqua-plants">
+            Aquatic Plants
+          </a>
+      <div class="nav">
+            <a href="#croton-plants">
+            Croton Plants
+            </a>   
+      <div class="nav">
+              <a href="#creeper-plants">
+              Creeper Plants
+              </a>
+      <div class="nav">
+              <a href="#climber-plants">
+              Climber Plants
+              </a>
+      <div class="nav">
+              <a href="#indoor-plants">
+              Indoor Plants
+              </a>
+       <div class="nav">
+                <a href="#vegetable-plants">
+                Vegetable Plants
+                </a>
+      <div class="nav">
+           <a href="#herbal-plants">
+              Herbal Plants
+           </a>
+      <div class="nav">
+              <a href="#fruit-plants">
+              Fruit Plants
+              </a>
+            
+      <div class="box">
+        <div class="cart-count">0</div>
+        <ion-icon name="cart" id="cart-icon"></ion-icon>
+      </div>
+
+      <div class="cart">
+        <div class="cart-title">Cart Items</div>
+        <div class="cart-content"></div>
+        <div class="total">
+          <div class="total-title">Total</div>
+          <div class="total-price">Rs.0</div>
+        </div>
+        <button class="btn-buy">Place Order</button>
+        <ion-icon name="close" id="cart-close"></ion-icon>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Flower Plants Section -->
+  <div class="container" id="flower-plants">
+    <h2 class="title">Flower Plants</h2>
+    <div class="shop-content">
+      <!-- Flower plant items go here -->
+      <div class="plant-box">
+        <div class="pic">
+          <img src="flower plant/Allamanda40.jpg" class="plant-img">
+        </div>
+        <h2 class="plant-title">Allamanda</h2>
+        <span class="plant-price">Rs.40</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+
+      
+      <div class="plant-box">
+        <div class="pic"><img src="flower plant/BigParijatham49.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Parijatham</h2>
+        <span class="plant-price">Rs.49</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="flower plant/BougainvillePink59.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Bougainville Pink</h2>
+        <span class="plant-price">Rs.59</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="flower plant/Decemblubell barleria40.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Decemer Bluebell</h2>
+        <span class="plant-price">Rs.40</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="flower plant/hibiscus Viceroy45.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Hibiscus Viceroy</h2>
+        <span class="plant-price">Rs.45</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="flower plant/PavalaMalli50.jpg" class="plant-img"></div>
+        <h2 class="plant-title">PavalaMalli</h2>
+        <span class="plant-price">Rs.50</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="flower plant/ixora red45.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Ixora Red</h2>
+        <span class="plant-price">Rs.45</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="rose/AbracadabraRose349.webp" class="plant-img"></div>
+        <h2 class="plant-title">Abracadabra Rose </h2>
+        <span class="plant-price">Rs.349</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+
+
+
+
+    </div>
+  </div>
+
+
+ <!-- Trees Section -->
+<div class="container" id="trees">
+  <h2 class="title">Trees</h2>
+  <div class="shop-content">
+    <!-- Trees go here -->
+    <div class="plant-box">
+      <div class="pic">
+        <img src="Trees/kiwi Hayward980.webp" class="plant-img">
+      </div>
+      <h2 class="plant-title">kiwi</h2>
+      <span class="plant-price">Rs.980</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+    
+    <div class="plant-box">
+      <div class="pic"><img src="Trees/Madras-Thorn-Plant-Kodukka-Puli39.jpg" class="plant-img"></div>
+      <h2 class="plant-title">Madras-Thorn-Plant-Kodukka-Puli</h2>
+      <span class="plant-price">Rs.150</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+    <div class="plant-box">
+      <div class="pic"><img src="Trees/Aegle-Marmelos-Koovalam-Vilvam39.jpg" class="plant-img"></div>
+      <h2 class="plant-title">Vilvam</h2>
+      <span class="plant-price">Rs.100</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+    <div class="plant-box">
+      <div class="pic"><img src="Trees/CasuarinaSavukku20.jpeg" class="plant-img"></div>
+      <h2 class="plant-title">CasuarinaSavukku</h2>
+      <span class="plant-price">Rs.202</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+    <div class="plant-box">
+      <div class="pic"><img src="Trees/Blackstone Mango899.jpg" class="plant-img"></div>
+      <h2 class="plant-title">Blackstone Mango</h2>
+      <span class="plant-price">899</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+    <div class="plant-box">
+      <div class="pic"><img src="Trees/nagalingam -couroupita guianensis.jpg" class="plant-img"></div>
+      <h2 class="plant-title">nagalingam -couroupita guianensis</h2>
+      <span class="plant-price">Rs.60</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+
+    <div class="plant-box">
+      <div class="pic"><img src="Trees/Bottlebrush-tree.jpg" class="plant-img"></div>
+      <h2 class="plant-title">Bottlebrush-tree</h2>
+      <span class="plant-price">Rs.159</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+
+    <div class="plant-box">
+      <div class="pic"><img src="Trees/azadirachta indica-neemtree.jpg" class="plant-img"></div>
+      <h2 class="plant-title">Azadirachta Indica-Neemtree</h2>
+      <span class="plant-price">Rs.240</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Pot Plants Section -->
+<div class="container" id="pot-plants">
+  <h2 class="title">Pot Plants</h2>
+  <div class="shop-content">
+    <!-- Pot plant items go here -->
+    <div class="plant-box">
+      <div class="pic">
+        <img src="Pot Plants/Bright-colour-plants720.jpg" class="plant-img">
+      </div>
+      <h2 class="plant-title">Bright-colour-plants</h2>
+      <span class="plant-price">Rs.720</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+    
+    <div class="plant-box">
+      <div class="pic"><img src="Pot Plants/Air-purifying-Indoor-plants-for-Office-Desk1160.jpg" class="plant-img"></div>
+      <h2 class="plant-title">Air-purifying-Indoor-plants</h2>
+      <span class="plant-price">Rs.1160</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+    <div class="plant-box">
+      <div class="pic"><img src="Pot Plants/Black-foliage-Plant933.jpg" class="plant-img"></div>
+      <h2 class="plant-title">Black-foliage-Plant</h2>
+      <span class="plant-price">Rs.933</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+    <div class="plant-box">
+      <div class="pic"><img src="Pot Plants/colourful-Foliage1120.jpg" class="plant-img"></div>
+      <h2 class="plant-title">colourful-Foliage</h2>
+      <span class="plant-price">Rs.1120</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+    <div class="plant-box">
+      <div class="pic"><img src="Pot Plants/Green-Yellow-Shade-678.jpg" class="plant-img"></div>
+      <h2 class="plant-title">Green-Yellow-Shade</h2>
+      <span class="plant-price">Rs.678</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+    <div class="plant-box">
+      <div class="pic"><img src="Pot Plants/Lovely-Outdoor-Foliage-1240.jpg" class="plant-img"></div>
+      <h2 class="plant-title">Lovely Foliage</h2>
+      <span class="plant-price">Rs.1240</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+
+    <div class="plant-box">
+      <div class="pic"><img src="Pot Plants/Natural-Air-purifiers-for-Summer1559.jpg" class="plant-img"></div>
+      <h2 class="plant-title">Natural-Air-purifiers</h2>
+      <span class="plant-price">Rs.1559</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+
+    <div class="plant-box">
+      <div class="pic"><img src="Pot Plants/Combo-of-pink635.jpg" class="plant-img"></div>
+      <h2 class="plant-title">Combo-of-pink</h2>
+      <span class="plant-price">Rs.635</span>
+      <ion-icon name="cart" class="add-cart"></ion-icon>
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Aqua Plants Section -->
+  <div class="container" id="aqua-plants">
+    <h2 class="title">Aqua Plants</h2>
+    <div class="shop-content">
+      <!-- Aqua plant items go here -->
+      <div class="plant-box">
+        <div class="pic">
+          <img src="images/water-lily-nymphae-nouchali-blue314.avif" class="plant-img">
+        </div>
+        <h2 class="plant-title">Waterlilly nymphae-nouchali-blue</h2>
+        <span class="plant-price">Rs.40</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+
+      
+      <div class="plant-box">
+        <div class="pic"><img src="Aquatic Plants/florida.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Florida</h2>
+        <span class="plant-price">Rs.49</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Aquatic Plants/Nelumbo_nucifera_LOTUS_bud.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Nelumbo Nucifera LOTUS bud</h2>
+        <span class="plant-price">Rs.159</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Aquatic Plants/Nymphaea_alba.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Nymphaea alba</h2>
+        <span class="plant-price">Rs.49</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Aquatic Plants/Alternanthera reineckil95.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Alternanthera reineckii</h2>
+        <span class="plant-price">Rs.275</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Aquatic Plants/Bucephalandrra pygmaea900.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Bucephalandrra pygmaea</h2>
+        <span class="plant-price">Rs.900</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Aquatic Plants/Cryptcoryne-wendtii275.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Cryptcoryne wendtii</h2>
+        <span class="plant-price">Rs.275</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Aquatic Plants/EchinodorusCordifoliusMable-queen85.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Echinodorus CordifoliusMable queen</h2>
+        <span class="plant-price">Rs.85</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+    </div>
+  </div>
+  <!-- Croton Plants Section -->
+  <div class="container" id="croton-plants">
+    <h2 class="title">Croton Plants</h2>
+    <div class="shop-content">
+      <!-- Croton plant items go here -->
+      <div class="plant-box">
+        <div class="pic">
+          <img src="croton/Acalpha-wilkesiana-hoffm45.jpeg" class="plant-img">
+        </div>
+        <h2 class="plant-title">Acalpha wilkesiana hoffm</h2>
+        <span class="plant-price">Rs.45</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+
+      
+      <div class="plant-box">
+        <div class="pic"><img src="croton/Acalpha-wilkesiana-Jacobs-coat-39.jpeg" class="plant-img"></div>
+        <h2 class="plant-title">Acalpha wilkesiana Jacobs</h2>
+        <span class="plant-price">Rs.39</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="croton/Acalypha-kona-gold-variegated39.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Acalypha-kona-gold-variegated</h2>
+        <span class="plant-price">Rs.39</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="croton/Cordyline-fruticosa-Negra39.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Cordyline-fruticosa-Negra</h2>
+        <span class="plant-price">Rs.39</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="croton/Cordyline-terminalis54.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Cordyline Terminalis</h2>
+        <span class="plant-price">Rs.54</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="croton/Euodia Golden Aralia49.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Euodia Golden Aralia</h2>
+        <span class="plant-price">Rs.49</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="croton/Cordyline-fruticosa45.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Cordyline-fruticosa</h2>
+        <span class="plant-price">Rs.45</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="croton/ficus Tiger Bark79.png" class="plant-img"></div>
+        <h2 class="plant-title">Ficus Tiger Bark</h2>
+        <span class="plant-price">Rs.79</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+    </div>
+  </div>
+
+  <!-- Creeper Plants Section -->
+  <div class="container" id="creeper-plants">
+    <h2 class="title">Creeper Plants</h2>
+    <div class="shop-content">
+      <!-- Creeper plant items go here -->
+      <div class="plant-box">
+        <div class="pic">
+          <img src="Creeper/lonicera-japonica.jpg" class="plant-img">
+        </div>
+        <h2 class="plant-title">Lonicera-Japonica</h2>
+        <span class="plant-price">Rs.69</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+
+      
+      <div class="plant-box">
+        <div class="pic"><img src="Creeper/begonia venusta_0.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Begonia venusta</h2>
+        <span class="plant-price">Rs.99</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Creeper/clerodendrum splendens_0.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Clerodendrum Splendens</h2>
+        <span class="plant-price">Rs.199</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Creeper/clematis-gourina.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Clematis Gourina</h2>
+        <span class="plant-price">Rs.199</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Creeper/Double-Petals-Rangoon-Creeper300.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Double Petals Rangoon Creeper</h2>
+        <span class="plant-price">Rs.300</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Creeper/Flaming-glory300.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Flaming Glory</h2>
+        <span class="plant-price">Rs.300</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Creeper/jaquementia violaca_0.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Jaquementia Violaca</h2>
+        <span class="plant-price">Rs.199</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Creeper/passiflora.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Passiflora</h2>
+        <span class="plant-price">Rs.299</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+    </div>
+  </div>
+
+  <!-- Climber Plants Section -->
+  <div class="container" id="climber-plants">
+    <h2 class="title">Climber Plants</h2>
+    <div class="shop-content">
+      <!-- Climber plant items go here -->
+      <div class="plant-box">
+        <div class="pic">
+          <img src="Climber/AnemoPegma chamberlaynii299.jpg" class="plant-img">
+        </div>
+        <h2 class="plant-title">AnemoPegma chamberlaynii</h2>
+        <span class="plant-price">Rs.299</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+
+      
+      <div class="plant-box">
+        <div class="pic"><img src="Climber/Blue-cluster-wineSkyblue Clustvine299.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Blue Cluster WineSkyblue Clustvine</h2>
+        <span class="plant-price">Rs.299</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Climber/Blue-Krishna-Kamal1250-Passiflora caerulea the blue Passion flo.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Blue-Krishna-Kamal</h2>
+        <span class="plant-price">Rs.1250</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Climber/BridalBouquet299White-Clematis3_plant.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Bridal Bouquet</h2>
+        <span class="plant-price">Rs.299</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Climber/Cats-Claw-Creeper199.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Cats Claw</h2>
+        <span class="plant-price">Rs.199</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Climber/Climbing-Rose199.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Climbing-Rose</h2>
+        <span class="plant-price">Rs.199</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Climber/Ranjai-plant-clematis299.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Ranjai-plant-clematis</h2>
+        <span class="plant-price">Rs.299</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Climber/Congea299.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Congea</h2>
+        <span class="plant-price">Rs.299</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+    </div>
+  </div>
+
+  <!-- Vegetable Plants Section -->
+  <div class="container" id="vegetable-plants">
+    <h2 class="title">Vegetable Plants</h2>
+    <div class="shop-content">
+      <!-- Vegetable plant items go here -->
+      <div class="plant-box">
+        <div class="pic">
+          <img src="Vegetable/Brinjal-Plant-Nattu-Kaththiri20.jpg" class="plant-img">
+        </div>
+        <h2 class="plant-title">Brinjal</h2>
+        <span class="plant-price">Rs.20</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+
+      
+      <div class="plant-box">
+        <div class="pic"><img src="Vegetable/Cabbage49.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Cabbage</h2>
+        <span class="plant-price">Rs.49</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Vegetable/cauliflower-plant39.jpg" class="plant-img"></div>
+        <h2 class="plant-title">cauliflower</h2>
+        <span class="plant-price">Rs.39</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Vegetable/tendersweet-carrot355.jpeg" class="plant-img"></div>
+        <h2 class="plant-title">Tendersweet-carrot</h2>
+        <span class="plant-price">Rs.355</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Vegetable/Long-Chilli1.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Long-Chilli</h2>
+        <span class="plant-price">Rs.199</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Vegetable/perfecto-radish-plant_399.jpeg" class="plant-img"></div>
+        <h2 class="plant-title">Perfecto-radish-plant</h2>
+        <span class="plant-price">Rs.399</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+      
+      <div class="plant-box">
+        <div class="pic"><img src="Vegetable/Buttercrunch-lettuce455.jpeg" class="plant-img"></div>
+        <h2 class="plant-title">Buttercrunch Lettuce</h2>
+        <span class="plant-price">Rs.455</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Vegetable/detroit-dark-red-beet-plant455.jpeg" class="plant-img"></div>
+        <h2 class="plant-title">Detroit-dark-red-Beetroot</h2>
+        <span class="plant-price">Rs.45</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>    
+
+
+    </div>
+  </div>
+
+  
+
+  <!-- Indoor Plants Section -->
+  <div class="container" id="indoor-plants">
+    <h2 class="title">Indoor Plants</h2>
+    <div class="shop-content">
+      <!-- Indoor plant items go here -->
+      <div class="plant-box">
+        <div class="pic">
+          <img src="Indoor plants/Aglaonema Snow White99.png" class="plant-img">
+        </div>
+        <h2 class="plant-title">Aglaonema Snow White</h2>
+        <span class="plant-price">Rs.99</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+
+      
+      <div class="plant-box">
+        <div class="pic"><img src="Indoor plants/Aglaonema Udom Sab100.jpeg" class="plant-img"></div>
+        <h2 class="plant-title">Aglaonema Udom sab</h2>
+        <span class="plant-price">Rs.100</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Indoor plants/money-plant-variegated49.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Money Plant</h2>
+        <span class="plant-price">Rs.59</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Indoor plants/ArecaPalm699.avif" class="plant-img"></div>
+        <h2 class="plant-title">ArecaPalm</h2>
+        <span class="plant-price">Rs.699</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Indoor plants/Caladium-Dragon-Heart59.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Caladium-Dragon-Heart</h2>
+        <span class="plant-price">Rs.59</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Indoor plants/Caladium-Pink-Dots59.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Caladium Pink Dots</h2>
+        <span class="plant-price">Rs.59</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Indoor plants/GoldenBottleBrush490.webp" class="plant-img"></div>
+        <h2 class="plant-title">GoldenBottle Brush</h2>
+        <span class="plant-price">Rs.490</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>    
+
+      <div class="plant-box">
+        <div class="pic"><img src="Indoor plants/Coleus-Vivid-lime-green39.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Coleus-Vivid-lime-green</h2>
+        <span class="plant-price">Rs.39</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+
+    </div>
+  </div>
+
+  <!-- Herbal Plants Section -->
+  <div class="container" id="herbal-plants">
+    <h2 class="title">Herbal Plants</h2>
+    <div class="shop-content">
+      <!-- Herbal plant items go here -->
+      <div class="plant-box">
+        <div class="pic">
+          <img src="Herbal/alovera150.jpg" class="plant-img">
+        </div>
+        <h2 class="plant-title">Alovera</h2>
+        <span class="plant-price">Rs.150</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+
+      <div class="plant-box">
+        <div class="pic"><img src="Herbal/nithyakalyani150.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Nithyakalyani</h2>
+        <span class="plant-price">Rs.150</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+
+      
+      <div class="plant-box">
+        <div class="pic"><img src="Herbal/avuri250.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Avuri</h2>
+        <span class="plant-price">Rs.250</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Herbal/Curry200.jpeg" class="plant-img"></div>
+        <h2 class="plant-title">Curry</h2>
+        <span class="plant-price">Rs.200</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Herbal/karpooraTulsi170.jpg" class="plant-img"></div>
+        <h2 class="plant-title">KarpooraTulsi</h2>
+        <span class="plant-price">Rs.170</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Herbal/kuppaimeni150.jpeg" class="plant-img"></div>
+        <h2 class="plant-title">kuppaimeni</h2>
+        <span class="plant-price">Rs.150</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Herbal/manjalkarisalankanni300.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Manjalkarisalankanni</h2>
+        <span class="plant-price">Rs.300</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="Herbal/mudakathanBalloonVine150.jpg" class="plant-img"></div>
+        <h2 class="plant-title">MudakathanBalloonVine</h2>
+        <span class="plant-price">Rs.150</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>    
+
+
+    </div>
+  </div>
+
+
+
+  <!--  Fruit Plants Section -->
+  <div class="container" id="fruit-plants">
+    <h2 class="title">Fruit Plants</h2>
+    <div class="shop-content">
+      <!-- Fruit plant items go here -->
+      <div class="plant-box">
+        <div class="pic">
+          <img src="gratify hybrid/jack-fruit-.webp" class="plant-img">
+        </div>
+        <h2 class="plant-title">Jack Fruit</h2>
+        <span class="plant-price">Rs.40</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+
+      
+      <div class="plant-box">
+        <div class="pic"><img src="gratify hybrid/Khirni-Fruit45.webp" class="plant-img"></div>
+        <h2 class="plant-title">Khirni Fruit</h2>
+        <span class="plant-price">Rs.45</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="gratify hybrid/Arka-Kiran-Guava65.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Guava</h2>
+        <span class="plant-price">Rs.65</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="gratify hybrid/orange-fruit-santra-.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Orange Fruit</h2>
+        <span class="plant-price">Rs.40</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="gratify hybrid/lemon-300x300.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Lemon</h2>
+        <span class="plant-price">Rs.45</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+      <div class="plant-box">
+        <div class="pic"><img src="gratify hybrid/chikoo-sapota-.webp" class="plant-img"></div>
+        <h2 class="plant-title">Sapota</h2>
+        <span class="plant-price">Rs.35</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="gratify hybrid/2-Barbados-cherry49.jpg" class="plant-img"></div>
+        <h2 class="plant-title">Cherry</h2>
+        <span class="plant-price">Rs.49</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+  
+      <div class="plant-box">
+        <div class="pic"><img src="gratify hybrid/-black-grape-angoor-seedless.webp" class="plant-img"></div>
+        <h2 class="plant-title">Black Grape</h2>
+        <span class="plant-price">Rs.59</span>
+        <ion-icon name="cart" class="add-cart"></ion-icon>
+      </div>
+  
+    </div>
+  </div>
+
+      
+
+
+
+  <script src="js/script.js"></script>
+</body>
+</html>

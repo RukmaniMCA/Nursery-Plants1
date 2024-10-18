@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus {
+    border-color: #007bff;
+  }
+  
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+   
+<div class="container">
+  <h2>Contact us </h2>
+  <form action="#">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+    <label for="subject">Subject</label>
+    <input type="text" id="subject" name="subject" required>
+    <label for="message">Message</label>
+    <input type="text" id="message" name="message" required>
+
+    <input type="submit" value="Submit">
+
+    <h3>SURABHI NURSERY<br>
+        SURABHI LANDSCAPES<br>
+        NH-47, Perundurai Road,<br>
+        Near Toll Plaza, Vijayamangalam,<br>
+        Erode-638056,<br>
+        Tamil Nadu,<br>
+        India.<br>
+        Email : surabhinurseryvjm@gmail.com ,<br>
+        surabhinurseryin2013@gmail.com<br>
+        Mobile :
+        Mr.Jayaprakash : +(91)-94432-63484, +(91)- 93642-63633<br>
+        Mrs.Amutha : +(91)- 98427-63633.</h3>
+  </form>
+</div>
+</body>
+</html>
